@@ -46,7 +46,8 @@ extern "C" {
 }
 
 #include "boolberry.h"
-#include "egihash/egihash.h"
+
+//#include "egihash/egihash.h"
 
 #define THROW_ERROR_EXCEPTION(x) Nan::ThrowError(x)
 #define THROW_ERROR_EXCEPTION_WITH_STATUS_CODE(x, y) NanThrowError(x, y)
@@ -704,7 +705,7 @@ NAN_METHOD(yescryptR32) {
 
 }
 
-
+/*
 NAN_METHOD(egihash) {
 
     if (info.Length() < 1)
@@ -725,7 +726,7 @@ NAN_METHOD(egihash) {
     info.GetReturnValue().Set(Nan::NewBuffer(output, 32).ToLocalChecked());
 
 }
-
+*/
 NAN_MODULE_INIT(init) {
     Nan::Set(target, Nan::New("lyra2z").ToLocalChecked(), Nan::GetFunction(Nan::New<FunctionTemplate>(lyra2z)).ToLocalChecked());
     Nan::Set(target, Nan::New("lyra2rev2").ToLocalChecked(), Nan::GetFunction(Nan::New<FunctionTemplate>(lyra2rev2)).ToLocalChecked());
@@ -757,7 +758,7 @@ NAN_MODULE_INIT(init) {
     Nan::Set(target, Nan::New("yescrypt").ToLocalChecked(), Nan::GetFunction(Nan::New<FunctionTemplate>(yescrypt)).ToLocalChecked());
     Nan::Set(target, Nan::New("yescryptR16").ToLocalChecked(), Nan::GetFunction(Nan::New<FunctionTemplate>(yescryptR16)).ToLocalChecked());
     Nan::Set(target, Nan::New("yescryptR32").ToLocalChecked(), Nan::GetFunction(Nan::New<FunctionTemplate>(yescryptR32)).ToLocalChecked());
-    Nan::Set(target, Nan::New("egihash").ToLocalChecked(), Nan::GetFunction(Nan::New<FunctionTemplate>(egihash)).ToLocalChecked());
+  //  Nan::Set(target, Nan::New("egihash").ToLocalChecked(), Nan::GetFunction(Nan::New<FunctionTemplate>(egihash)).ToLocalChecked());
 }
 
 NODE_MODULE(multihashing, init)
